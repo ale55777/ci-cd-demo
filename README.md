@@ -31,6 +31,7 @@ ci-cd-demo/
 - **Comprehensive Testing**: 8 unit tests covering positive, negative, and edge cases
 - **CI/CD Pipeline**: Automated testing and deployment on push/PR to main branch
 - **Code Coverage**: Integrated coverage reporting with pytest-cov
+- **🐳 Docker Support**: Fully containerized with Dockerfile and docker-compose.yml
 
 ## 📦 Installation
 
@@ -92,6 +93,36 @@ Expected output:
 Adding 10 + 25 = 35
 Adding 3.5 + 2.5 = 6.0
 ```
+
+## 🐳 Running with Docker
+
+### Quick Start with Docker
+
+```bash
+# Build the Docker image
+docker build -t ci-cd-demo:latest .
+
+# Run the application in Docker
+docker run --rm ci-cd-demo:latest
+
+# Run tests in Docker
+docker run --rm ci-cd-demo:latest pytest tests/ -v --cov=. --cov-report=term-missing
+```
+
+### Using Docker Compose (Recommended)
+
+```bash
+# Run the application
+docker-compose up app
+
+# Run tests
+docker-compose up test
+
+# Build and run
+docker-compose up --build app
+```
+
+📖 **For complete Docker guide**, see [DOCKER.md](DOCKER.md)
 
 ## 🔄 CI/CD Pipeline
 

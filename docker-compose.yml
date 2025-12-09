@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ci-cd-demo:latest
+    container_name: ci-cd-demo-app
+    command: python main.py
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ci-cd-demo:latest
+    container_name: ci-cd-demo-test
+    command: pytest tests/ -v --cov=. --cov-report=term-missing
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
